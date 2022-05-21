@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatefulWidget {
+class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool enabled;
   final Function(String)? function;
@@ -11,12 +11,6 @@ class CustomTextField extends StatefulWidget {
       required this.enabled,
       this.function})
       : super(key: key);
-
-  @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
-}
-
-class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -31,10 +25,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
       ]),
       child: TextFormField(
-        enabled: widget.enabled,
-        controller: widget.controller,
+        enabled: enabled,
+        controller: controller,
         textAlign: TextAlign.center,
-        onChanged: widget.function,
+        onChanged: function,
         decoration: const InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
           hintText: 'BTC/USD',
